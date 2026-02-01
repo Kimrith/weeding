@@ -87,7 +87,7 @@
       /* Menu Toggle Button (Hidden on Desktop) */
       .menu-toggle {
         display: none;
-        background: none;
+
         margin-left: auto; /* ✅ push to right in flex */
         border: none;
         color: white;
@@ -187,24 +187,18 @@
           position: fixed;
           top: 0;
           right: -100%;
-          width: 65%; /* ⬅ smaller */
-          max-width: 320px; /* ⬅ prevent huge screens */
+          width: 80%;
           height: 100vh;
-
           background: linear-gradient(
             to bottom,
-            rgba(128, 0, 0, 0.95),
-            rgba(180, 30, 30, 0.95)
+            var(--dark-red),
+            var(--primary-red)
           );
-
-          padding: 80px 20px 20px;
+          padding: 70px 20px 20px;
           z-index: 999;
           overflow-y: auto;
-
-          transition: right 0.35s ease;
-          box-shadow: -4px 0 12px rgba(0, 0, 0, 0.25);
-          border-top-left-radius: 12px;
-          border-bottom-left-radius: 12px;
+          transition: right 0.4s ease-in-out;
+          box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
         }
 
         /* Active state for mobile menu */

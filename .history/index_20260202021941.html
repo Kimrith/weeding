@@ -2,7 +2,10 @@
 <html lang="km">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
+    />
     <title>សោក សង្ហា និង ស៊ីម ស្រីរត្ន័ - ពិធីមង្គលការ</title>
     <link
       rel="stylesheet"
@@ -31,14 +34,17 @@
         color: var(--dark-text);
         line-height: 1.8;
         overflow-x: hidden;
+        -webkit-text-size-adjust: 100%;
       }
 
       .container {
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 20px;
+        width: 100%;
       }
 
+      /* Chinese-inspired header - Mobile Optimized */
       header {
         background: linear-gradient(
           to right,
@@ -54,29 +60,24 @@
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
       }
 
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-
       .nav-container {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex-wrap: wrap;
         width: 100%;
       }
 
       .logo {
         font-family: "Dancing Script", "Noto Serif Khmer", cursive;
-        font-size: 28px;
+        font-size: 24px;
         color: var(--gold);
         font-weight: 700;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 60%;
+        max-width: 200px;
       }
 
       .logo span {
@@ -84,34 +85,31 @@
         margin: 0 3px;
       }
 
-      /* Menu Toggle Button (Hidden on Desktop) */
+      /* Mobile Menu */
       .menu-toggle {
         display: none;
         background: none;
-        margin-left: auto; /* ✅ push to right in flex */
         border: none;
         color: white;
         font-size: 24px;
         cursor: pointer;
-        padding: 5px 10px;
-        z-index: 1001;
+        padding: 5px;
+      }
+
+      nav {
         transition: all 0.3s ease;
       }
 
-      .menu-toggle:hover {
-        color: var(--light-gold);
-      }
-
-      /* Desktop Navigation */
       nav ul {
         display: flex;
         list-style: none;
-        margin: 0;
-        padding: 0;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
       }
 
       nav ul li {
-        margin-left: 25px;
+        margin-left: 15px;
         position: relative;
       }
 
@@ -121,9 +119,8 @@
         font-weight: 500;
         padding: 8px 0;
         transition: all 0.3s;
-        font-size: 1.1rem;
+        font-size: 1rem;
         display: block;
-        position: relative;
       }
 
       nav ul li a:hover {
@@ -145,165 +142,9 @@
         width: 100%;
       }
 
-      /* Tablet Styles (768px - 1024px) */
-      @media (max-width: 1024px) {
-        .logo {
-          font-size: 24px;
-        }
-
-        nav ul li {
-          margin-left: 20px;
-        }
-
-        nav ul li a {
-          font-size: 1rem;
-        }
-      }
-
-      /* Mobile Styles (max-width: 767px) */
-      @media (max-width: 767px) {
-        header {
-          padding: 10px 0;
-        }
-
-        .container {
-          padding: 0 15px;
-        }
-
-        .logo {
-          font-size: 20px;
-          max-width: 70%;
-        }
-
-        /* Show hamburger menu button on mobile */
-        .menu-toggle {
-          display: block;
-        }
-
-        /* Hide desktop navigation by default on mobile */
-        nav ul {
-          display: none;
-          flex-direction: column;
-          position: fixed;
-          top: 0;
-          right: -100%;
-          width: 65%; /* ⬅ smaller */
-          max-width: 320px; /* ⬅ prevent huge screens */
-          height: 100vh;
-
-          background: linear-gradient(
-            to bottom,
-            rgba(128, 0, 0, 0.95),
-            rgba(180, 30, 30, 0.95)
-          );
-
-          padding: 80px 20px 20px;
-          z-index: 999;
-          overflow-y: auto;
-
-          transition: right 0.35s ease;
-          box-shadow: -4px 0 12px rgba(0, 0, 0, 0.25);
-          border-top-left-radius: 12px;
-          border-bottom-left-radius: 12px;
-        }
-
-        /* Active state for mobile menu */
-        nav ul.active {
-          display: flex;
-          right: 0;
-        }
-
-        nav ul li {
-          margin: 15px 0;
-          width: 100%;
-          text-align: center;
-          opacity: 0;
-          transform: translateX(20px);
-          transition: all 0.3s ease;
-        }
-
-        nav ul.active li {
-          opacity: 1;
-          transform: translateX(0);
-        }
-
-        /* Staggered animation for menu items */
-        nav ul.active li:nth-child(1) {
-          transition-delay: 0.1s;
-        }
-        nav ul.active li:nth-child(2) {
-          transition-delay: 0.2s;
-        }
-        nav ul.active li:nth-child(3) {
-          transition-delay: 0.3s;
-        }
-        nav ul.active li:nth-child(4) {
-          transition-delay: 0.4s;
-        }
-        nav ul.active li:nth-child(5) {
-          transition-delay: 0.5s;
-        }
-
-        nav ul li a {
-          padding: 15px;
-          font-size: 1.1rem;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-          text-align: center;
-        }
-
-        nav ul li a:hover {
-          background-color: rgba(255, 255, 255, 0.1);
-          border-radius: 5px;
-          padding-left: 25px;
-        }
-
-        nav ul li a::after {
-          display: none;
-        }
-
-        /* Overlay when menu is open */
-        .menu-overlay {
-          display: none;
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: rgba(0, 0, 0, 0.5);
-          z-index: 998;
-        }
-
-        .menu-overlay.active {
-          display: block;
-        }
-      }
-
-      /* Small Mobile Styles (max-width: 480px) */
-      @media (max-width: 480px) {
-        .logo {
-          font-size: 18px;
-          max-width: 65%;
-        }
-
-        .menu-toggle {
-          font-size: 20px;
-          padding: 5px;
-        }
-
-        nav ul {
-          width: 85%;
-          padding: 60px 15px 15px;
-        }
-
-        nav ul li a {
-          font-size: 1rem;
-          padding: 12px;
-        }
-      }
-
-      /* Hero Section with Chinese elements */
+      /* Hero Section - Mobile Optimized */
       .hero {
-        padding: 180px 0 120px;
+        padding: 150px 0 80px;
         text-align: center;
         background:
           linear-gradient(rgba(255, 250, 240, 0.85), rgba(255, 250, 240, 0.9)),
@@ -312,70 +153,81 @@
         background-position: center;
         position: relative;
         overflow: hidden;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
       }
 
       .hero::before,
       .hero::after {
         content: "囍";
         position: absolute;
-        font-size: 150px;
+        font-size: 80px;
         color: rgba(197, 48, 48, 0.08);
         z-index: 0;
       }
 
       .hero::before {
-        top: 50px;
-        left: 50px;
+        top: 30px;
+        left: 20px;
         transform: rotate(-15deg);
       }
 
       .hero::after {
-        bottom: 50px;
-        right: 50px;
+        bottom: 30px;
+        right: 20px;
         transform: rotate(15deg);
       }
 
       .hero-content {
         position: relative;
         z-index: 1;
+        width: 100%;
       }
 
       .hero h1 {
         font-family: "Dancing Script", "Noto Serif Khmer", cursive;
-        font-size: 5rem;
+        font-size: 2.8rem;
         color: var(--primary-red);
-        margin-bottom: 20px;
+        margin-bottom: 15px;
         text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
         animation: fadeInDown 1.5s ease-out;
+        line-height: 1.2;
+        padding: 0 10px;
       }
 
       .couple-names {
-        font-size: 3rem;
+        font-size: 1.8rem;
         color: var(--dark-red);
-        margin-bottom: 20px;
+        margin-bottom: 15px;
         font-family: "Noto Serif Khmer", serif;
         font-weight: 700;
         animation: fadeInUp 1.5s ease-out 0.3s both;
+        line-height: 1.3;
+        padding: 0 10px;
       }
 
       .date-place {
-        font-size: 1.8rem;
-        margin-bottom: 40px;
+        font-size: 1.2rem;
+        margin-bottom: 30px;
         color: var(--dark-text);
         position: relative;
         display: inline-block;
-        padding: 10px 30px;
+        padding: 8px 20px;
         background-color: rgba(212, 175, 55, 0.1);
         border-radius: 50px;
         animation: fadeInUp 1.5s ease-out 0.6s both;
+        max-width: 90%;
       }
 
       .hero p {
         max-width: 800px;
-        margin: 0 auto 50px;
-        font-size: 1.2rem;
+        margin: 0 auto 30px;
+        font-size: 1rem;
         color: #555;
         animation: fadeInUp 1.5s ease-out 0.9s both;
+        padding: 0 15px;
+        line-height: 1.6;
       }
 
       .btn {
@@ -386,17 +238,18 @@
           var(--dark-red)
         );
         color: white;
-        padding: 15px 40px;
+        padding: 12px 30px;
         border-radius: 50px;
         text-decoration: none;
         font-weight: 600;
         transition: all 0.4s;
         border: 2px solid var(--gold);
         box-shadow: 0 5px 15px rgba(197, 48, 48, 0.3);
-        font-size: 1.1rem;
+        font-size: 1rem;
         position: relative;
         overflow: hidden;
         animation: fadeInUp 1.5s ease-out 1.2s both;
+        margin: 10px;
       }
 
       .btn:hover {
@@ -405,41 +258,23 @@
         color: var(--light-gold);
       }
 
-      .btn::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.2),
-          transparent
-        );
-        transition: left 0.7s;
-      }
-
-      .btn:hover::after {
-        left: 100%;
-      }
-
-      /* Main Content */
+      /* Main Content - Mobile Optimized */
       .main-content {
-        padding: 100px 0;
+        padding: 60px 0;
         text-align: center;
         position: relative;
       }
 
       .section-title {
-        font-size: 3rem;
+        font-size: 2rem;
         color: var(--primary-red);
-        margin-bottom: 60px;
+        margin-bottom: 40px;
         position: relative;
         display: inline-block;
         font-family: "Noto Serif Khmer", serif;
         font-weight: 700;
+        padding: 0 20px;
+        line-height: 1.3;
       }
 
       .section-title::before,
@@ -449,25 +284,25 @@
         top: 50%;
         transform: translateY(-50%);
         color: var(--gold);
-        font-size: 2rem;
+        font-size: 1.5rem;
       }
 
       .section-title::before {
-        left: -70px;
+        left: -10px;
       }
 
       .section-title::after {
-        right: -70px;
+        right: -10px;
       }
 
-      /* Invitation Section */
+      /* Invitation Section - Mobile Optimized */
       .invitation-box {
         background-color: white;
-        border-radius: 20px;
-        padding: 60px 40px;
+        border-radius: 15px;
+        padding: 30px 20px;
         box-shadow: var(--shadow);
-        max-width: 1000px;
-        margin: 0 auto 80px;
+        max-width: 100%;
+        margin: 0 auto 50px;
         text-align: center;
         border: 3px solid var(--gold);
         position: relative;
@@ -481,7 +316,7 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 10px;
+        height: 8px;
         background: linear-gradient(
           to right,
           var(--primary-red),
@@ -491,27 +326,32 @@
       }
 
       .invitation-box h2 {
-        font-size: 2.8rem;
+        font-size: 1.8rem;
         color: var(--primary-red);
-        margin-bottom: 40px;
+        margin-bottom: 25px;
         font-family: "Noto Serif Khmer", serif;
         font-weight: 700;
+        line-height: 1.3;
+        padding: 0 10px;
       }
 
       .couple-intro {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-bottom: 50px;
-        flex-wrap: wrap;
+        margin-bottom: 30px;
         position: relative;
+        gap: 20px;
       }
 
       .person {
-        padding: 0 40px;
+        padding: 0 15px;
         text-align: center;
         position: relative;
         animation: float 3s ease-in-out infinite;
+        width: 100%;
+        max-width: 250px;
       }
 
       .person:nth-child(1) {
@@ -523,13 +363,13 @@
       }
 
       .person img {
-        width: 180px;
-        height: 180px;
+        width: 140px;
+        height: 140px;
         border-radius: 50%;
         object-fit: cover;
-        border: 8px solid var(--gold);
-        margin-bottom: 20px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        border: 6px solid var(--gold);
+        margin-bottom: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         transition: transform 0.5s;
       }
 
@@ -538,40 +378,42 @@
       }
 
       .person h3 {
-        font-size: 2rem;
+        font-size: 1.5rem;
         color: var(--dark-red);
-        margin-bottom: 10px;
+        margin-bottom: 8px;
         font-family: "Noto Serif Khmer", serif;
+        line-height: 1.3;
       }
 
       .person p {
         font-style: italic;
         color: #777;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
       }
 
       .double-happiness {
-        font-size: 5rem;
+        font-size: 3rem;
         color: var(--primary-red);
-        margin: 0 30px;
+        margin: 10px 0;
         text-shadow: 3px 3px 0 var(--gold);
         animation: pulse 2s infinite;
+        order: 2;
       }
 
-      /* Features Section */
+      /* Features Section - Mobile Optimized */
       .features {
         display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-top: 60px;
-        gap: 30px;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 40px;
+        gap: 20px;
+        width: 100%;
       }
 
       .feature-box {
-        flex: 1;
-        min-width: 300px;
-        max-width: 350px;
-        padding: 50px 30px;
+        width: 100%;
+        max-width: 400px;
+        padding: 30px 20px;
         background-color: white;
         border-radius: 15px;
         box-shadow: var(--shadow);
@@ -582,61 +424,52 @@
       }
 
       .feature-box:hover {
-        transform: translateY(-15px);
-        box-shadow: 0 20px 40px rgba(197, 48, 48, 0.2);
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(197, 48, 48, 0.2);
       }
 
       .feature-icon {
-        font-size: 4rem;
+        font-size: 3rem;
         color: var(--primary-red);
-        margin-bottom: 25px;
+        margin-bottom: 20px;
         display: block;
       }
 
       .feature-box h3 {
-        font-size: 2rem;
-        margin-bottom: 20px;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
         color: var(--dark-red);
         font-family: "Noto Serif Khmer", serif;
+        line-height: 1.3;
       }
 
       .feature-box p {
         color: #666;
-        font-size: 1.1rem;
-        margin-bottom: 25px;
+        font-size: 1rem;
+        margin-bottom: 20px;
+        line-height: 1.6;
       }
 
-      /* Guest Section */
+      /* Guest Section - Mobile Optimized */
       .guest-section {
         background: linear-gradient(
           135deg,
           var(--dark-red) 0%,
           var(--primary-red) 100%
         );
-        padding: 100px 0;
-        margin-top: 100px;
+        padding: 60px 0;
+        margin-top: 60px;
         position: relative;
         overflow: hidden;
       }
 
-      .guest-section::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d4af37' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
-        opacity: 0.1;
-      }
-
       .guest-box {
         background-color: white;
-        border-radius: 20px;
-        padding: 60px 40px;
-        max-width: 700px;
+        border-radius: 15px;
+        padding: 30px 20px;
+        max-width: 100%;
         margin: 0 auto;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         border: 3px solid var(--gold);
         position: relative;
         z-index: 1;
@@ -644,89 +477,100 @@
       }
 
       #guest {
-        font-size: 2.5rem;
+        font-size: 1.8rem;
         color: var(--primary-red);
-        margin-bottom: 40px;
+        margin-bottom: 25px;
         font-family: "Noto Serif Khmer", serif;
         font-weight: 700;
-        min-height: 60px;
+        min-height: 50px;
+        line-height: 1.3;
+        padding: 0 10px;
       }
 
       .couple-names-guest {
         display: flex;
-        justify-content: center;
-        margin-bottom: 40px;
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 25px;
+        gap: 15px;
+        width: 100%;
       }
 
       .couple-names-guest p {
-        margin: 0 25px;
-        font-size: 1.4rem;
+        margin: 0;
+        font-size: 1.1rem;
         color: var(--dark-text);
-        padding: 15px 25px;
+        padding: 12px 20px;
         background-color: rgba(212, 175, 55, 0.1);
         border-radius: 10px;
-        min-width: 200px;
+        width: 100%;
+        max-width: 250px;
+        text-align: center;
       }
 
       .couple-names-guest p span {
         display: block;
         font-weight: bold;
         color: var(--primary-red);
-        font-size: 1.8rem;
+        font-size: 1.4rem;
         margin-bottom: 5px;
       }
 
       .guest-box p {
-        font-size: 1.3rem;
-        margin-bottom: 30px;
+        font-size: 1.1rem;
+        margin-bottom: 20px;
         color: #555;
+        line-height: 1.6;
+        padding: 0 10px;
       }
 
       .guest-box img {
         width: 100%;
-        max-height: 350px;
+        max-height: 250px;
         object-fit: cover;
-        border-radius: 15px;
-        margin-top: 30px;
-        border: 5px solid var(--gold);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        margin-top: 20px;
+        border: 4px solid var(--gold);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
       }
 
-      /* Footer */
+      /* Footer - Mobile Optimized */
       footer {
         background: linear-gradient(to right, #222, #444);
         color: white;
-        padding: 60px 0 30px;
+        padding: 40px 0 20px;
         text-align: center;
         position: relative;
       }
 
       .footer-logo {
         font-family: "Dancing Script", "Noto Serif Khmer", cursive;
-        font-size: 3rem;
-        margin-bottom: 25px;
+        font-size: 2rem;
+        margin-bottom: 20px;
         color: var(--gold);
+        line-height: 1.3;
+        padding: 0 15px;
       }
 
       .social-icons {
         display: flex;
         justify-content: center;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+        gap: 10px;
       }
 
       .social-icons a {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 50px;
-        height: 50px;
+        width: 45px;
+        height: 45px;
         background-color: rgba(212, 175, 55, 0.2);
         border-radius: 50%;
-        margin: 0 15px;
         color: white;
         text-decoration: none;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         transition: all 0.3s;
         border: 2px solid transparent;
       }
@@ -739,17 +583,19 @@
       }
 
       .copyright {
-        margin-top: 30px;
-        font-size: 1rem;
+        margin-top: 20px;
+        font-size: 0.9rem;
         opacity: 0.8;
         color: #ccc;
+        padding: 0 15px;
+        line-height: 1.5;
       }
 
       /* Animations */
       @keyframes fadeInDown {
         from {
           opacity: 0;
-          transform: translateY(-50px);
+          transform: translateY(-30px);
         }
         to {
           opacity: 1;
@@ -760,7 +606,7 @@
       @keyframes fadeInUp {
         from {
           opacity: 0;
-          transform: translateY(50px);
+          transform: translateY(30px);
         }
         to {
           opacity: 1;
@@ -771,7 +617,7 @@
       @keyframes slideUp {
         from {
           opacity: 0;
-          transform: translateY(80px);
+          transform: translateY(50px);
         }
         to {
           opacity: 1;
@@ -782,7 +628,7 @@
       @keyframes scaleIn {
         from {
           opacity: 0;
-          transform: scale(0.8);
+          transform: scale(0.9);
         }
         to {
           opacity: 1;
@@ -796,7 +642,7 @@
           transform: translateY(0);
         }
         50% {
-          transform: translateY(-20px);
+          transform: translateY(-15px);
         }
       }
 
@@ -806,108 +652,303 @@
           transform: scale(1);
         }
         50% {
-          transform: scale(1.1);
+          transform: scale(1.05);
         }
       }
 
-      /* Responsive Design */
-      @media (max-width: 992px) {
-        .hero h1 {
-          font-size: 4rem;
-        }
-
-        .couple-names {
-          font-size: 2.5rem;
-        }
-
-        .double-happiness {
-          font-size: 4rem;
-          margin: 30px 0;
-        }
-
-        .couple-intro {
-          flex-direction: column;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .hero {
-          padding: 150px 0 80px;
+      /* Tablet Styles */
+      @media (min-width: 768px) {
+        .logo {
+          font-size: 28px;
+          max-width: none;
         }
 
         .hero h1 {
-          font-size: 3.2rem;
+          font-size: 3.5rem;
         }
 
         .couple-names {
-          font-size: 2rem;
+          font-size: 2.2rem;
         }
 
         .date-place {
           font-size: 1.4rem;
         }
 
-        nav ul {
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-
-        nav ul li {
-          margin: 5px 15px;
-        }
-
         .section-title {
           font-size: 2.5rem;
         }
 
-        .section-title::before,
+        .section-title::before {
+          left: -40px;
+        }
+
         .section-title::after {
-          display: none;
-        }
-
-        .feature-box {
-          min-width: 100%;
-        }
-
-        .couple-names-guest p {
-          margin: 10px;
-          min-width: 150px;
-        }
-      }
-
-      @media (max-width: 576px) {
-        .hero {
-          padding: 130px 0 60px;
-        }
-
-        .hero h1 {
-          font-size: 2.5rem;
-        }
-
-        .couple-names {
-          font-size: 1.8rem;
+          right: -40px;
         }
 
         .invitation-box {
-          padding: 40px 20px;
+          padding: 40px 30px;
+        }
+
+        .invitation-box h2 {
+          font-size: 2.2rem;
+        }
+
+        .couple-intro {
+          flex-direction: row;
+          gap: 40px;
         }
 
         .person {
-          padding: 0 10px;
+          max-width: none;
         }
 
         .person img {
-          width: 140px;
-          height: 140px;
+          width: 160px;
+          height: 160px;
         }
 
-        .guest-box {
-          padding: 40px 20px;
+        .double-happiness {
+          font-size: 4rem;
+          margin: 0 20px;
+          order: 0;
+        }
+
+        .features {
+          flex-direction: row;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        .feature-box {
+          max-width: 45%;
+        }
+
+        .couple-names-guest {
+          flex-direction: row;
+          justify-content: center;
+          gap: 20px;
+        }
+
+        .couple-names-guest p {
+          max-width: 220px;
+        }
+
+        .hero::before,
+        .hero::after {
+          font-size: 100px;
+        }
+
+        .hero::before {
+          top: 40px;
+          left: 40px;
+        }
+
+        .hero::after {
+          bottom: 40px;
+          right: 40px;
+        }
+      }
+
+      /* Desktop Styles */
+      @media (min-width: 992px) {
+        .logo {
+          font-size: 32px;
+        }
+
+        .hero {
+          padding: 180px 0 120px;
+        }
+
+        .hero h1 {
+          font-size: 4.5rem;
+        }
+
+        .couple-names {
+          font-size: 2.8rem;
+        }
+
+        .date-place {
+          font-size: 1.6rem;
+        }
+
+        .section-title {
+          font-size: 3rem;
+        }
+
+        .section-title::before {
+          left: -60px;
+        }
+
+        .section-title::after {
+          right: -60px;
+        }
+
+        .invitation-box {
+          padding: 50px 40px;
+          max-width: 900px;
+        }
+
+        .invitation-box h2 {
+          font-size: 2.5rem;
+        }
+
+        .person img {
+          width: 180px;
+          height: 180px;
+        }
+
+        .double-happiness {
+          font-size: 5rem;
+          margin: 0 30px;
+        }
+
+        .feature-box {
+          max-width: 350px;
+        }
+
+        .features {
+          gap: 30px;
+        }
+
+        .hero::before,
+        .hero::after {
+          font-size: 150px;
+        }
+
+        .hero::before {
+          top: 50px;
+          left: 50px;
+        }
+
+        .hero::after {
+          bottom: 50px;
+          right: 50px;
+        }
+      }
+
+      /* Mobile Menu Toggle */
+      @media (max-width: 768px) {
+        .menu-toggle {
+          display: block;
+        }
+
+        nav ul {
+          display: none;
+          flex-direction: column;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background: linear-gradient(
+            to right,
+            var(--dark-red),
+            var(--primary-red)
+          );
+          padding: 15px;
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+          z-index: 1000;
+        }
+
+        nav ul.show {
+          display: flex;
+        }
+
+        nav ul li {
+          margin: 10px 0;
+          width: 100%;
+          text-align: center;
+        }
+
+        nav ul li a {
+          padding: 12px;
+          font-size: 1.1rem;
+        }
+
+        .nav-container {
+          justify-content: space-between;
+        }
+
+        .logo {
+          max-width: 180px;
+        }
+      }
+
+      /* Extra Small Devices */
+      @media (max-width: 480px) {
+        .hero h1 {
+          font-size: 2.2rem;
+        }
+
+        .couple-names {
+          font-size: 1.5rem;
+        }
+
+        .date-place {
+          font-size: 1rem;
+          padding: 6px 15px;
+        }
+
+        .hero p {
+          font-size: 0.95rem;
+        }
+
+        .btn {
+          padding: 10px 25px;
+          font-size: 0.95rem;
+        }
+
+        .section-title {
+          font-size: 1.6rem;
+        }
+
+        .invitation-box h2 {
+          font-size: 1.5rem;
+        }
+
+        .person h3 {
+          font-size: 1.3rem;
+        }
+
+        .person img {
+          width: 120px;
+          height: 120px;
+        }
+
+        .double-happiness {
+          font-size: 2.5rem;
+        }
+
+        .feature-box h3 {
+          font-size: 1.3rem;
+        }
+
+        #guest {
+          font-size: 1.5rem;
+        }
+
+        .couple-names-guest p span {
+          font-size: 1.2rem;
         }
 
         .footer-logo {
-          font-size: 2.2rem;
+          font-size: 1.6rem;
         }
+      }
+
+      /* Fix for mobile tap targets */
+      button,
+      a {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+      }
+
+      /* Prevent horizontal scroll */
+      html,
+      body {
+        max-width: 100%;
+        overflow-x: hidden;
       }
     </style>
     <link
@@ -975,16 +1016,16 @@
           </p>
           <p
             style="
-              margin-top: 30px;
+              margin-top: 25px;
               font-style: italic;
-              font-size: 1.3rem;
+              font-size: 1.1rem;
               color: var(--dark-red);
             "
           >
             ថ្ងៃច័ន្ទ ទី១៥ ខែមីនា ឆ្នាំ២០២៦ វេលាម៉ោង ៤:០០ល្ងាច<br />
             សាលរៀបការ វិមានពិភពលោក ភ្នំពេញ
           </p>
-          <a href="#rsvp" class="btn" style="margin-top: 40px"
+          <a href="#rsvp" class="btn" style="margin-top: 30px"
             >បញ្ជាក់ការចូលរួម</a
           >
         </div>
@@ -1002,7 +1043,7 @@
             <a
               href="#"
               class="btn"
-              style="margin-top: 20px; padding: 12px 25px; font-size: 1rem"
+              style="margin-top: 15px; padding: 10px 20px; font-size: 0.95rem"
               >មើលបញ្ជីអំណោយ</a
             >
           </div>
@@ -1017,7 +1058,7 @@
             <a
               href="#"
               class="btn"
-              style="margin-top: 20px; padding: 12px 25px; font-size: 1rem"
+              style="margin-top: 15px; padding: 10px 20px; font-size: 0.95rem"
               >មើលវិចិត្រសាល</a
             >
           </div>
@@ -1048,7 +1089,7 @@
     <footer id="contact">
       <div class="container">
         <div class="footer-logo">សោក សង្ហា & ស៊ីម ស្រីរត្ន័</div>
-        <p style="font-size: 1.3rem; margin-bottom: 20px">
+        <p style="font-size: 1.1rem; margin-bottom: 20px">
           សូមអរគុណចំពោះការចូលរួមរបស់អ្នកនៅក្នុងថ្ងៃពិសេសរបស់ពួកយើង!
         </p>
         <div class="social-icons">
@@ -1064,29 +1105,67 @@
     </footer>
 
     <script>
-      // Simulating the guest data fetch from the original code
+      // Mobile menu toggle
       document.addEventListener("DOMContentLoaded", function () {
-        // Sample user data in Khmer to simulate the JSON file
+        const menuToggle = document.getElementById("menuToggle");
+        const navMenu = document.getElementById("navMenu");
+
+        if (menuToggle && navMenu) {
+          menuToggle.addEventListener("click", function () {
+            navMenu.classList.toggle("show");
+            menuToggle.innerHTML = navMenu.classList.contains("show")
+              ? '<i class="fas fa-times"></i>'
+              : '<i class="fas fa-bars"></i>';
+          });
+
+          // Close menu when clicking on a link
+          const navLinks = navMenu.querySelectorAll("a");
+          navLinks.forEach((link) => {
+            link.addEventListener("click", function () {
+              navMenu.classList.remove("show");
+              menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+          });
+
+          // Close menu when clicking outside
+          document.addEventListener("click", function (event) {
+            if (
+              !navMenu.contains(event.target) &&
+              !menuToggle.contains(event.target)
+            ) {
+              navMenu.classList.remove("show");
+              menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+          });
+        }
+
+        // Guest data fetch
         const params = new URLSearchParams(window.location.search);
         const id = parseInt(params.get("id"));
 
-        fetch("users.json")
-          .then((res) => res.json())
-          .then((data) => {
-            const guest = data.user.find((u) => u.id === id);
+        const sampleUsers = {
+          user: [
+            { id: 1, name: "គ្រួសារសោក" },
+            { id: 2, name: "គ្រួសារស៊ីម" },
+            { id: 3, name: "មិត្តភក្តិ" },
+            { id: 4, name: "ក្រុមគ្រូ" },
+            { id: 5, name: "ក្រុមសហការី" },
+          ],
+        };
 
-            if (guest) {
-              document.getElementById("guest").textContent =
-                "សូមគោរពជូន" + guest.name;
-            } else {
-              document.getElementById("guest").textContent = "កំពុងដំណើរការ...";
-            }
-          });
+        // Find guest by ID
+        let guestName = "ភ្ញៀវ";
+        if (id) {
+          const guest = sampleUsers.user.find((u) => u.id === id);
+          if (guest) {
+            guestName = guest.name;
+          }
+        }
 
         // Update the guest element
         const guestElement = document.getElementById("guest");
         if (guestElement) {
-          guestElement.textContent = "ជូនចំពោះ " + guestName;
+          guestElement.textContent = "សូមគោរពជូន " + guestName;
 
           // Add fade-in animation for guest name
           guestElement.style.opacity = "0";
@@ -1098,7 +1177,7 @@
           }, 300);
         }
 
-        // Add smooth scrolling for navigation links
+        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
           anchor.addEventListener("click", function (e) {
             e.preventDefault();
@@ -1109,97 +1188,21 @@
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
               window.scrollTo({
-                top: targetElement.offsetTop - 100,
+                top: targetElement.offsetTop - 80,
                 behavior: "smooth",
               });
             }
           });
         });
-        // Add this script to handle mobile menu toggle
-        document.addEventListener("DOMContentLoaded", function () {
-          const menuToggle = document.querySelector(".menu-toggle");
-          const navMenu = document.querySelector("nav ul");
-          const navLinks = document.querySelectorAll("nav ul li a");
 
-          // Create close button for mobile menu
-          const closeButton = document.createElement("button");
-          closeButton.className = "close-menu";
-          closeButton.innerHTML = "&times;";
-          closeButton.style.display = "none";
-
-          if (navMenu) {
-            navMenu.appendChild(closeButton);
-          }
-
-          // Toggle menu function
-          function toggleMenu() {
-            navMenu.classList.toggle("active");
-            if (navMenu.classList.contains("active")) {
-              closeButton.style.display = "block";
-              menuToggle.style.display = "none";
-              document.body.style.overflow = "hidden"; // Prevent scrolling when menu is open
-            } else {
-              closeButton.style.display = "none";
-              menuToggle.style.display = "block";
-              document.body.style.overflow = "auto";
-            }
-          }
-
-          // Menu toggle click event
-          if (menuToggle && navMenu) {
-            menuToggle.addEventListener("click", toggleMenu);
-            closeButton.addEventListener("click", toggleMenu);
-          }
-
-          // Close menu when clicking on a link
-          navLinks.forEach((link) => {
-            link.addEventListener("click", function () {
-              if (window.innerWidth <= 768) {
-                navMenu.classList.remove("active");
-                closeButton.style.display = "none";
-                menuToggle.style.display = "block";
-                document.body.style.overflow = "auto";
-              }
-            });
-          });
-
-          // Close menu when clicking outside
-          document.addEventListener("click", function (event) {
-            if (
-              window.innerWidth <= 768 &&
-              navMenu.classList.contains("active") &&
-              !navMenu.contains(event.target) &&
-              !menuToggle.contains(event.target)
-            ) {
-              toggleMenu();
-            }
-          });
-
-          // Adjust menu on window resize
-          window.addEventListener("resize", function () {
-            if (window.innerWidth > 768) {
-              navMenu.classList.remove("active");
-              navMenu.style.display = "flex";
-              closeButton.style.display = "none";
-              menuToggle.style.display = "none";
-              document.body.style.overflow = "auto";
-            } else {
-              if (!navMenu.classList.contains("active")) {
-                navMenu.style.display = "none";
-              }
-              menuToggle.style.display = "block";
-            }
-          });
-        });
-
-        // Add floating animation to double happiness symbol
+        // Floating animation to double happiness symbol
         const doubleHappiness = document.querySelector(".double-happiness");
         if (doubleHappiness) {
           doubleHappiness.style.animation =
             "float 3s ease-in-out infinite, pulse 2s infinite 1s";
         }
 
-        // Add scroll-triggered animations
+        // Scroll-triggered animations
         const observerOptions = {
           threshold: 0.1,
           rootMargin: "0px 0px -50px 0px",
@@ -1224,73 +1227,17 @@
           el.style.transition = "opacity 0.8s, transform 0.8s";
           observer.observe(el);
         });
-      });
 
-      document.addEventListener("DOMContentLoaded", function () {
-        const menuToggle = document.getElementById("menuToggle");
-        const navMenu = document.getElementById("navMenu");
-        const navLinks = document.querySelectorAll("#navMenu li a");
-
-        // Create overlay element
-        const overlay = document.createElement("div");
-        overlay.className = "menu-overlay";
-        document.body.appendChild(overlay);
-
-        // Toggle menu function
-        function toggleMenu() {
-          navMenu.classList.toggle("active");
-          overlay.classList.toggle("active");
-          document.body.style.overflow = navMenu.classList.contains("active")
-            ? "hidden"
-            : "";
-
-          // Change menu icon
-          const icon = menuToggle.querySelector("i");
-          if (navMenu.classList.contains("active")) {
-            icon.className = "fas fa-times";
-          } else {
-            icon.className = "fas fa-bars";
-          }
-        }
-
-        // Menu toggle click event
-        menuToggle.addEventListener("click", toggleMenu);
-
-        // Close menu when clicking on overlay
-        overlay.addEventListener("click", toggleMenu);
-
-        // Close menu when clicking on a link
-        navLinks.forEach((link) => {
-          link.addEventListener("click", function () {
-            if (window.innerWidth <= 767) {
-              toggleMenu();
+        // Prevent horizontal scroll on mobile
+        document.addEventListener(
+          "touchmove",
+          function (e) {
+            if (e.touches.length > 1) {
+              e.preventDefault();
             }
-          });
-        });
-
-        // Close menu on escape key
-        document.addEventListener("keydown", function (event) {
-          if (event.key === "Escape" && navMenu.classList.contains("active")) {
-            toggleMenu();
-          }
-        });
-
-        // Adjust menu on window resize
-        window.addEventListener("resize", function () {
-          if (window.innerWidth > 767) {
-            // Reset on desktop
-            navMenu.classList.remove("active");
-            overlay.classList.remove("active");
-            document.body.style.overflow = "";
-            menuToggle.querySelector("i").className = "fas fa-bars";
-            navMenu.style.display = "flex";
-            navMenu.style.right = "";
-          } else {
-            if (!navMenu.classList.contains("active")) {
-              navMenu.style.display = "none";
-            }
-          }
-        });
+          },
+          { passive: false },
+        );
       });
     </script>
   </body>

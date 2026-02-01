@@ -181,31 +181,6 @@
         }
 
         /* Hide desktop navigation by default on mobile */
-        nav ul {
-          display: none;
-          flex-direction: column;
-          position: fixed;
-          top: 0;
-          right: -100%;
-          width: 65%; /* ⬅ smaller */
-          max-width: 320px; /* ⬅ prevent huge screens */
-          height: 100vh;
-
-          background: linear-gradient(
-            to bottom,
-            rgba(128, 0, 0, 0.95),
-            rgba(180, 30, 30, 0.95)
-          );
-
-          padding: 80px 20px 20px;
-          z-index: 999;
-          overflow-y: auto;
-
-          transition: right 0.35s ease;
-          box-shadow: -4px 0 12px rgba(0, 0, 0, 0.25);
-          border-top-left-radius: 12px;
-          border-bottom-left-radius: 12px;
-        }
 
         /* Active state for mobile menu */
         nav ul.active {
