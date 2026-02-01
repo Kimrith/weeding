@@ -1,0 +1,565 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wedding Invitation</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Cormorant Garamond", serif;
+        text-align: center;
+        background: linear-gradient(135deg, #fff9f5 0%, #fff0e6 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        color: #5e4c3e;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image:
+          radial-gradient(
+            circle at 10% 20%,
+            rgba(186, 148, 110, 0.03) 0%,
+            transparent 20%
+          ),
+          radial-gradient(
+            circle at 90% 80%,
+            rgba(212, 175, 130, 0.05) 0%,
+            transparent 25%
+          ),
+          radial-gradient(
+            circle at 30% 70%,
+            rgba(186, 148, 110, 0.02) 0%,
+            transparent 30%
+          );
+        z-index: -1;
+      }
+
+      .invitation-container {
+        background: rgba(255, 253, 248, 0.92);
+        border: 1px solid rgba(186, 148, 110, 0.2);
+        border-radius: 12px;
+        box-shadow:
+          0 10px 30px rgba(94, 76, 62, 0.15),
+          0 0 40px rgba(212, 175, 130, 0.15);
+        max-width: 800px;
+        width: 100%;
+        padding: 50px 40px;
+        position: relative;
+        overflow: hidden;
+        margin: 20px;
+      }
+
+      .invitation-container::before,
+      .invitation-container::after {
+        content: "";
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        opacity: 0.15;
+        z-index: 0;
+      }
+
+      .invitation-container::before {
+        top: -10px;
+        left: -10px;
+        background-image: radial-gradient(circle, #d4af8a 2px, transparent 3px);
+        background-size: 10px 10px;
+      }
+
+      .invitation-container::after {
+        bottom: -10px;
+        right: -10px;
+        background-image: radial-gradient(circle, #d4af8a 2px, transparent 3px);
+        background-size: 10px 10px;
+      }
+
+      .floral-decoration {
+        position: absolute;
+        opacity: 0.12;
+        z-index: 0;
+      }
+
+      .floral-1 {
+        top: 20px;
+        left: 30px;
+        font-size: 48px;
+        transform: rotate(-15deg);
+      }
+
+      .floral-2 {
+        bottom: 20px;
+        right: 30px;
+        font-size: 48px;
+        transform: rotate(15deg);
+      }
+
+      .floral-3 {
+        top: 60%;
+        left: 15px;
+        font-size: 24px;
+        transform: rotate(10deg);
+      }
+
+      .floral-4 {
+        bottom: 40%;
+        right: 15px;
+        font-size: 24px;
+        transform: rotate(-10deg);
+      }
+
+      .content {
+        position: relative;
+        z-index: 1;
+      }
+
+      h1 {
+        font-family: "Great Vibes", cursive;
+        color: #8b5e3c;
+        font-size: 5.5rem;
+        margin-bottom: 10px;
+        letter-spacing: 8px;
+        text-shadow: 0 2px 4px rgba(139, 94, 60, 0.1);
+        position: relative;
+        display: inline-block;
+      }
+
+      h1::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        height: 2px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          #d4af8a,
+          transparent
+        );
+      }
+
+      .ring-icon {
+        font-size: 2.2rem;
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        color: #d4af8a;
+        animation: shimmer 2s infinite;
+      }
+
+      @keyframes shimmer {
+        0%,
+        100% {
+          opacity: 0.7;
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.1);
+        }
+      }
+
+      #guest {
+        font-family: "Playfair Display", serif;
+        font-size: 2.8rem;
+        margin: 25px 0 35px;
+        color: #7a5c42;
+        font-weight: 500;
+        letter-spacing: 2px;
+        position: relative;
+        display: inline-block;
+      }
+
+      #guest::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60%;
+        height: 1px;
+        background: #d4af8a;
+      }
+
+      .couple-container {
+        margin: 30px 0 40px;
+        position: relative;
+      }
+
+      .couple-names {
+        font-family: "Great Vibes", cursive;
+        font-size: 4.2rem;
+        color: #8b5e3c;
+        line-height: 1.2;
+        margin: 15px 0;
+        position: relative;
+        padding: 0 20px;
+      }
+
+      .couple-names::before,
+      .couple-names::after {
+        content: "•";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 2.5rem;
+        color: #d4af8a;
+      }
+
+      .couple-names::before {
+        left: 0;
+      }
+
+      .couple-names::after {
+        right: 0;
+      }
+
+      .ampersand {
+        display: block;
+        font-family: "Great Vibes", cursive;
+        font-size: 5.5rem;
+        color: #d4af8a;
+        margin: 5px 0;
+        letter-spacing: 3px;
+      }
+
+      .invitation-text {
+        font-size: 1.8rem;
+        margin: 25px 0 40px;
+        line-height: 1.5;
+        color: #6b5547;
+        font-style: italic;
+        position: relative;
+        padding: 0 20px;
+      }
+
+      .invitation-text::before,
+      .invitation-text::after {
+        content: "";
+
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 4rem;
+        position: absolute;
+        color: rgba(139, 94, 60, 0.15);
+        line-height: 1;
+      }
+
+      .invitation-text::before {
+        top: -25px;
+        left: -15px;
+      }
+
+      .invitation-text::after {
+        content: "
+          "";
+        bottom: -45px;
+        right: -15px;
+        transform: rotate(180deg);
+      }
+
+      .details-container {
+        background: rgba(245, 235, 220, 0.6);
+        border: 1px solid rgba(186, 148, 110, 0.25);
+        border-radius: 8px;
+        padding: 25px;
+        margin: 35px 0;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(139, 94, 60, 0.08);
+      }
+
+      .detail-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.9rem;
+        color: #8b5e3c;
+        margin-bottom: 15px;
+        position: relative;
+        display: inline-block;
+      }
+
+      .detail-title::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40%;
+        height: 1px;
+        background: #d4af8a;
+      }
+
+      .details {
+        font-size: 1.55rem;
+        line-height: 1.7;
+        margin-top: 15px;
+        color: #6b5547;
+      }
+
+      .details p {
+        margin: 8px 0;
+      }
+
+      .couple-photo {
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 8px solid rgba(212, 175, 138, 0.4);
+        box-shadow: 0 5px 20px rgba(94, 76, 62, 0.25);
+        margin: 30px auto;
+        display: block;
+        background: linear-gradient(45deg, #f5e9dc, #e8d8c9);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s ease;
+      }
+
+      .couple-photo:hover {
+        transform: scale(1.03);
+        box-shadow: 0 8px 25px rgba(94, 76, 62, 0.35);
+        border-color: rgba(212, 175, 138, 0.65);
+      }
+
+      .couple-photo::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          transparent 45%,
+          rgba(212, 175, 138, 0.15) 65%
+        );
+        pointer-events: none;
+      }
+
+      .rsvp {
+        font-family: "Playfair Display", serif;
+        font-size: 1.7rem;
+        margin-top: 35px;
+        color: #7a5c42;
+        font-style: italic;
+        position: relative;
+        padding-top: 20px;
+      }
+
+      .rsvp::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 2px;
+        background: #d4af8a;
+      }
+
+      .hearts {
+        margin-top: 25px;
+        font-size: 1.8rem;
+        color: #d48a8a;
+        letter-spacing: 10px;
+        opacity: 0.8;
+      }
+
+      @media (max-width: 768px) {
+        .invitation-container {
+          padding: 35px 25px;
+          margin: 10px;
+        }
+
+        h1 {
+          font-size: 4.2rem;
+          letter-spacing: 5px;
+        }
+
+        #guest {
+          font-size: 2.3rem;
+          margin: 20px 0 30px;
+        }
+
+        .couple-names {
+          font-size: 3.4rem;
+        }
+
+        .ampersand {
+          font-size: 4.5rem;
+        }
+
+        .invitation-text {
+          font-size: 1.6rem;
+          margin: 20px 0 30px;
+        }
+
+        .details-container {
+          padding: 20px 15px;
+        }
+
+        .detail-title {
+          font-size: 1.7rem;
+        }
+
+        .details {
+          font-size: 1.4rem;
+        }
+
+        .couple-photo {
+          width: 190px;
+          height: 190px;
+        }
+
+        .rsvp {
+          font-size: 1.5rem;
+          margin-top: 25px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .invitation-container {
+          padding: 25px 20px;
+        }
+
+        h1 {
+          font-size: 3.6rem;
+          letter-spacing: 3px;
+        }
+
+        #guest {
+          font-size: 2rem;
+          margin: 15px 0 25px;
+        }
+
+        .couple-names {
+          font-size: 2.8rem;
+        }
+
+        .ampersand {
+          font-size: 3.8rem;
+        }
+
+        .invitation-text {
+          font-size: 1.45rem;
+          margin: 15px 0 25px;
+        }
+
+        .details {
+          font-size: 1.3rem;
+        }
+
+        .couple-photo {
+          width: 170px;
+          height: 170px;
+        }
+
+        .rsvp {
+          font-size: 1.4rem;
+        }
+
+        .floral-decoration {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="invitation-container">
+      <div class="floral-decoration floral-1">✿</div>
+      <div class="floral-decoration floral-2">✿</div>
+      <div class="floral-decoration floral-3">❀</div>
+      <div class="floral-decoration floral-4">❀</div>
+
+      <div class="content">
+        <h1>Wedding Invitation <span class="ring-icon">💍</span></h1>
+        <h2 id="guest">Loading...</h2>
+
+        <div class="couple-container">
+          <div class="couple-names">Sim Sreyroth</div>
+          <div class="ampersand">&</div>
+          <div class="couple-names">Sok Sangha</div>
+        </div>
+
+        <p class="invitation-text">
+          request the pleasure of your company as they unite in marriage
+        </p>
+
+        <div class="details-container">
+          <div class="detail-title">Celebration Details</div>
+          <div class="details">
+            <p>Saturday, the fifteenth of June</p>
+            <p>Two thousand twenty-six at half past five in the evening</p>
+            <p>The Grand Ballroom, Phnom Penh</p>
+          </div>
+        </div>
+
+        <img
+          src="https://images.unsplash.com/photo-1514315782419-2f049a6e1494?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+          alt="The Couple"
+          class="couple-photo"
+        />
+
+        <p class="rsvp">Kindly respond by May 1st, 2026</p>
+        <div class="hearts">♥ ♥ ♥</div>
+      </div>
+    </div>
+
+    <script>
+      // Simulating the fetch since we don't have users.json in this environment
+      // In a real implementation, this would fetch from your users.json file
+      document.addEventListener("DOMContentLoaded", function () {
+        // Simulating URL parameters for demo purposes
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = parseInt(urlParams.get("id")) || 1; // Default to 1 if no ID provided
+
+        // Simulated user data since we can't fetch in this environment
+        const simulatedData = {
+          user: [
+            { id: 1, name: "Mr. & Mrs. Chan" },
+            { id: 2, name: "Sok Dara" },
+            { id: 3, name: "Sim Malis" },
+            { id: 4, name: "The Lim Family" },
+            { id: 5, name: "Mr. Thong" },
+          ],
+        };
+
+        // Find the guest
+        const guest = simulatedData.user.find((u) => u.id === id);
+
+        // Update the guest name
+        const guestElement = document.getElementById("guest");
+        if (guest) {
+          guestElement.textContent = "Dear " + guest.name;
+        } else {
+          guestElement.textContent = "Dear Esteemed Guest";
+        }
+
+        // Add a slight delay to simulate loading for demo purposes
+        setTimeout(() => {
+          guestElement.style.opacity = "1";
+          guestElement.style.transform = "translateY(0)";
+        }, 300);
+      });
+    </script>
+  </body>
+</html>

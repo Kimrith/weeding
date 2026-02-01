@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>James & Vivian - Wedding Invitation</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-color: #8b5e3c;
+        --secondary-color: #f8e9dd;
+        --accent-color: #e8c8af;
+        --text-color: #5a3921;
+        --light-text: #fff7f0;
+        --shadow: 0 5px 15px rgba(139, 94, 60, 0.1);
+      }
+
+      body {
+        font-family: "Playfair Display", serif;
+        background-color: var(--light-text);
+        color: var(--text-color);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header & Navigation */
+      header {
+        background-color: rgba(255, 247, 240, 0.95);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        padding: 15px 0;
+        box-shadow: var(--shadow);
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-family: "Dancing Script", cursive;
+        font-size: 28px;
+        color: var(--primary-color);
+        font-weight: 700;
+      }
+
+      .logo span {
+        color: #d4a574;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav ul li {
+        margin-left: 30px;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: var(--text-color);
+        font-weight: 500;
+        transition: color 0.3s;
+        position: relative;
+      }
+
+      nav ul li a:hover {
+        color: var(--primary-color);
+      }
+
+      nav ul li a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary-color);
+        transition: width 0.3s;
+      }
+
+      nav ul li a:hover::after {
+        width: 100%;
+      }
+
+      /* Hero Section */
+      .hero {
+        padding: 150px 0 100px;
+        text-align: center;
+        background:
+          linear-gradient(rgba(255, 247, 240, 0.9), rgba(255, 247, 240, 0.9)),
+          url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80");
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+
+      .hero h1 {
+        font-family: "Dancing Script", cursive;
+        font-size: 4.5rem;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+      }
+
+      .hero h2 {
+        font-size: 1.8rem;
+        font-weight: 400;
+        margin-bottom: 30px;
+        color: var(--text-color);
+      }
+
+      .hero p {
+        max-width: 700px;
+        margin: 0 auto 40px;
+        font-size: 1.1rem;
+      }
+
+      .couple-names {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+        font-family: "Dancing Script", cursive;
+      }
+
+      .date-place {
+        font-size: 1.5rem;
+        margin-bottom: 40px;
+        color: var(--text-color);
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 12px 30px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s;
+        border: 2px solid var(--primary-color);
+      }
+
+      .btn:hover {
+        background-color: transparent;
+        color: var(--primary-color);
+      }
+
+      /* Main Content */
+      .main-content {
+        padding: 80px 0;
+        text-align: center;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 50px;
+        position: relative;
+        display: inline-block;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: var(--accent-color);
+      }
+
+      /* Invitation Section */
+      .invitation-box {
+        background-color: white;
+        border-radius: 10px;
+        padding: 50px;
+        box-shadow: var(--shadow);
+        max-width: 900px;
+        margin: 0 auto 60px;
+        text-align: center;
+        border: 1px solid var(--accent-color);
+      }
+
+      .invitation-box h2 {
+        font-size: 2.2rem;
+        color: var(--primary-color);
+        margin-bottom: 30px;
+        font-family: "Dancing Script", cursive;
+      }
+
+      .couple-intro {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+      }
+
+      .person {
+        padding: 0 30px;
+        text-align: center;
+      }
+
+      .person img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid var(--accent-color);
+        margin-bottom: 15px;
+      }
+
+      .person h3 {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        margin-bottom: 5px;
+      }
+
+      .person p {
+        font-style: italic;
+        color: #777;
+      }
+
+      .heart-icon {
+        font-size: 2.5rem;
+        color: #e8c8af;
+        margin: 0 20px;
+      }
+
+      /* Gifts & Photos Section */
+      .features {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-top: 50px;
+      }
+
+      .feature-box {
+        flex: 1;
+        min-width: 300px;
+        margin: 15px;
+        padding: 40px 30px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: var(--shadow);
+        transition: transform 0.3s;
+      }
+
+      .feature-box:hover {
+        transform: translateY(-10px);
+      }
+
+      .feature-icon {
+        font-size: 3rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+      }
+
+      .feature-box h3 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        color: var(--primary-color);
+      }
+
+      /* Guest Section */
+      .guest-section {
+        background-color: var(--secondary-color);
+        padding: 80px 0;
+        margin-top: 80px;
+      }
+
+      .guest-box {
+        background-color: white;
+        border-radius: 10px;
+        padding: 40px;
+        max-width: 600px;
+        margin: 0 auto;
+        box-shadow: var(--shadow);
+      }
+
+      #guest {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-bottom: 30px;
+        font-family: "Dancing Script", cursive;
+      }
+
+      .couple-names-guest {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+      }
+
+      .couple-names-guest p {
+        margin: 0 20px;
+        font-size: 1.2rem;
+        color: var(--text-color);
+      }
+
+      .couple-names-guest p span {
+        display: block;
+        font-weight: bold;
+        color: var(--primary-color);
+        font-size: 1.4rem;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--primary-color);
+        color: var(--light-text);
+        padding: 40px 0;
+        text-align: center;
+      }
+
+      .footer-logo {
+        font-family: "Dancing Script", cursive;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .social-icons a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        margin: 0 10px;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+
+      .social-icons a:hover {
+        background-color: var(--accent-color);
+        transform: translateY(-5px);
+      }
+
+      .copyright {
+        margin-top: 20px;
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 3.5rem;
+        }
+
+        .couple-names {
+          font-size: 2rem;
+        }
+
+        nav ul li {
+          margin-left: 15px;
+        }
+
+        .person {
+          margin-bottom: 30px;
+          width: 100%;
+        }
+
+        .heart-icon {
+          margin: 20px 0;
+          transform: rotate(90deg);
+        }
+
+        .couple-intro {
+          flex-direction: column;
+        }
+
+        .feature-box {
+          min-width: 100%;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero {
+          padding: 120px 0 70px;
+        }
+
+        .hero h1 {
+          font-size: 2.8rem;
+        }
+
+        .nav-container {
+          flex-direction: column;
+        }
+
+        nav {
+          margin-top: 15px;
+        }
+
+        nav ul li {
+          margin: 0 10px;
+        }
+
+        .invitation-box {
+          padding: 30px 20px;
+        }
+      }
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header & Navigation -->
+    <header>
+      <div class="container nav-container">
+        <div class="logo">James<span>&</span>Vivian</div>
+        <nav>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#gifts">Gifts</a></li>
+            <li><a href="#photos">Photos</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container">
+        <h1>Celebrate With Us!</h1>
+        <div class="couple-names">James & Vivian</div>
+        <div class="date-place">
+          October 15, 2023 • The Grand Palace, New York
+        </div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+          nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
+          volutpat. Ut wisi enim ad minim veniam.
+        </p>
+        <a href="#invitation" class="btn">View Invitation</a>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="main-content">
+      <div class="container">
+        <h2 class="section-title">Our Wedding Invitation</h2>
+
+        <div class="invitation-box" id="invitation">
+          <h2>We're Getting Married!</h2>
+          <div class="couple-intro">
+            <div class="person">
+              <img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
+                alt="James"
+              />
+              <h3>James Wilson</h3>
+              <p>The Groom</p>
+            </div>
+            <div class="heart-icon">💖</div>
+            <div class="person">
+              <img
+                src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
+                alt="Vivian"
+              />
+              <h3>Vivian Rose</h3>
+              <p>The Bride</p>
+            </div>
+          </div>
+          <p>
+            With immense joy and happiness, we invite you to witness and
+            celebrate our union as we exchange vows and begin our journey
+            together as husband and wife. Your presence will make our day even
+            more special.
+          </p>
+          <p style="margin-top: 20px; font-style: italic">
+            Saturday, October 15, 2023 at 4:00 PM<br />The Grand Palace, 123
+            Celebration Avenue, New York
+          </p>
+          <a href="#rsvp" class="btn" style="margin-top: 30px">RSVP Now</a>
+        </div>
+
+        <!-- Gifts & Photos Section -->
+        <div class="features">
+          <div class="feature-box" id="gifts">
+            <div class="feature-icon">🎁</div>
+            <h3>Gift Registry</h3>
+            <p>
+              Your presence at our wedding is the greatest gift of all. However,
+              if you wish to honor us with a gift, we have registered at the
+              following stores.
+            </p>
+            <a
+              href="#"
+              class="btn"
+              style="margin-top: 20px; padding: 10px 20px; font-size: 0.9rem"
+              >View Registry</a
+            >
+          </div>
+
+          <div class="feature-box" id="photos">
+            <div class="feature-icon">📸</div>
+            <h3>Photo Gallery</h3>
+            <p>
+              Take a look at our journey together through these special moments
+              we've captured. More photos will be added after the wedding.
+            </p>
+            <a
+              href="#"
+              class="btn"
+              style="margin-top: 20px; padding: 10px 20px; font-size: 0.9rem"
+              >View Gallery</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Guest Section -->
+    <section class="guest-section" id="rsvp">
+      <div class="container">
+        <h2 class="section-title" style="color: var(--light-text)">
+          Personal Invitation
+        </h2>
+        <div class="guest-box">
+          <h2 id="guest">Dear Guest</h2>
+          <div class="couple-names-guest">
+            <p><span>Groom</span>Sok Sangha</p>
+            <p><span>Bride</span>Sim Sreyroth</p>
+          </div>
+          <p>We are honored to invite you to celebrate our wedding ❤️</p>
+          <img
+            src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+            alt="Wedding Rings"
+            style="
+              width: 100%;
+              max-height: 300px;
+              object-fit: cover;
+              border-radius: 10px;
+              margin-top: 30px;
+            "
+          />
+
+          <!-- Simulating the user data fetch from the original code -->
+          <div
+            style="
+              margin-top: 30px;
+              padding: 20px;
+              background-color: var(--secondary-color);
+              border-radius: 10px;
+            "
+          >
+            <h3 style="color: var(--primary-color); margin-bottom: 15px">
+              Guest Lookup Simulation
+            </h3>
+            <p>
+              In the actual implementation, this would fetch guest data from
+              users.json based on the URL parameter "id".
+            </p>
+            <p>
+              Try adding <code>?id=1</code> to the URL to see a personalized
+              message.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <div class="container">
+        <div class="footer-logo">James & Vivian</div>
+        <p>Thank you for being a part of our special day!</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+        </div>
+        <div class="copyright">
+          &copy; 2023 James & Vivian Wedding. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Simulating the guest data fetch from the original code
+      document.addEventListener("DOMContentLoaded", function () {
+        // Sample user data to simulate the JSON file
+        const sampleUsers = {
+          user: [
+            { id: 1, name: "John & Jane Doe" },
+            { id: 2, name: "Michael Smith" },
+            { id: 3, name: "Sarah Johnson" },
+          ],
+        };
+
+        // Get the ID from URL parameters
+        const params = new URLSearchParams(window.location.search);
+        const id = parseInt(params.get("id"));
+
+        // Find guest by ID
+        let guestName = "Guest";
+        if (id) {
+          const guest = sampleUsers.user.find((u) => u.id === id);
+          if (guest) {
+            guestName = guest.name;
+          }
+        }
+
+        // Update the guest element
+        document.getElementById("guest").textContent = "Dear " + guestName;
+
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+
+        // Add a simple animation to the hero section
+        const heroTitle = document.querySelector(".hero h1");
+        if (heroTitle) {
+          heroTitle.style.opacity = "0";
+          heroTitle.style.transform = "translateY(20px)";
+
+          setTimeout(() => {
+            heroTitle.style.transition = "opacity 1s, transform 1s";
+            heroTitle.style.opacity = "1";
+            heroTitle.style.transform = "translateY(0)";
+          }, 300);
+        }
+      });
+    </script>
+  </body>
+</html>

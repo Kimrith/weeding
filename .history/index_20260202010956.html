@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Wedding Invitation</title>
+
+    <style>
+      body {
+        font-family: serif;
+        text-align: center;
+        background: #fff7f0;
+        padding-top: 80px;
+      }
+      h1 {
+        color: #8b5e3c;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Wedding Invitation 💍</h1>
+    <h2 id="guest">Loading...</h2>
+
+    <p>We are honored to invite you to celebrate our wedding ❤️</p>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const id = parseInt(params.get("id"));
+
+      fetch("users.json")
+        .then((res) => res.json())
+        .then((data) => {
+          const guest = data.user.find((u) => u.id === id);
+
+          if (guest) {
+            document.getElementById("guest").textContent = "Dear " + guest.name;
+          } else {
+            document.getElementById("guest").textContent = "Dear Guest";
+          }
+        });
+    </script>
+  </body>
+</html>

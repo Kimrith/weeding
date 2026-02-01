@@ -1,0 +1,990 @@
+<!doctype html>
+<html lang="km">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>សោក សង្ហា និង ស៊ីម ស្រីរត្ន័ - ពិធីមង្គលការ</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-red: #c53030;
+        --gold: #d4af37;
+        --dark-red: #8b0000;
+        --light-gold: #f8e9a1;
+        --cream: #fffaf0;
+        --dark-text: #333;
+        --shadow: 0 10px 30px rgba(197, 48, 48, 0.15);
+      }
+
+      body {
+        font-family: "Noto Serif Khmer", "Noto Serif SC", serif;
+        background-color: var(--cream);
+        color: var(--dark-text);
+        line-height: 1.8;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Chinese-inspired header */
+      header {
+        background: linear-gradient(
+          to right,
+          var(--dark-red),
+          var(--primary-red)
+        );
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        padding: 15px 0;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-family: "Dancing Script", "Noto Serif Khmer", cursive;
+        font-size: 32px;
+        color: var(--gold);
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .logo span {
+        color: white;
+        margin: 0 5px;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav ul li {
+        margin-left: 25px;
+        position: relative;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: white;
+        font-weight: 500;
+        padding: 8px 0;
+        transition: all 0.3s;
+        font-size: 1.1rem;
+      }
+
+      nav ul li a:hover {
+        color: var(--light-gold);
+      }
+
+      nav ul li a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background-color: var(--gold);
+        transition: width 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      nav ul li a:hover::after {
+        width: 100%;
+      }
+
+      /* Hero Section with Chinese elements */
+      .hero {
+        padding: 180px 0 120px;
+        text-align: center;
+        background:
+          linear-gradient(rgba(255, 250, 240, 0.85), rgba(255, 250, 240, 0.9)),
+          url("https://images.unsplash.com/photo-1544185310-0b3cf501672b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80");
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before,
+      .hero::after {
+        content: "囍";
+        position: absolute;
+        font-size: 150px;
+        color: rgba(197, 48, 48, 0.08);
+        z-index: 0;
+      }
+
+      .hero::before {
+        top: 50px;
+        left: 50px;
+        transform: rotate(-15deg);
+      }
+
+      .hero::after {
+        bottom: 50px;
+        right: 50px;
+        transform: rotate(15deg);
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero h1 {
+        font-family: "Dancing Script", "Noto Serif Khmer", cursive;
+        font-size: 5rem;
+        color: var(--primary-red);
+        margin-bottom: 20px;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+        animation: fadeInDown 1.5s ease-out;
+      }
+
+      .couple-names {
+        font-size: 3rem;
+        color: var(--dark-red);
+        margin-bottom: 20px;
+        font-family: "Noto Serif Khmer", serif;
+        font-weight: 700;
+        animation: fadeInUp 1.5s ease-out 0.3s both;
+      }
+
+      .date-place {
+        font-size: 1.8rem;
+        margin-bottom: 40px;
+        color: var(--dark-text);
+        position: relative;
+        display: inline-block;
+        padding: 10px 30px;
+        background-color: rgba(212, 175, 55, 0.1);
+        border-radius: 50px;
+        animation: fadeInUp 1.5s ease-out 0.6s both;
+      }
+
+      .hero p {
+        max-width: 800px;
+        margin: 0 auto 50px;
+        font-size: 1.2rem;
+        color: #555;
+        animation: fadeInUp 1.5s ease-out 0.9s both;
+      }
+
+      .btn {
+        display: inline-block;
+        background: linear-gradient(
+          to right,
+          var(--primary-red),
+          var(--dark-red)
+        );
+        color: white;
+        padding: 15px 40px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.4s;
+        border: 2px solid var(--gold);
+        box-shadow: 0 5px 15px rgba(197, 48, 48, 0.3);
+        font-size: 1.1rem;
+        position: relative;
+        overflow: hidden;
+        animation: fadeInUp 1.5s ease-out 1.2s both;
+      }
+
+      .btn:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(197, 48, 48, 0.4);
+        color: var(--light-gold);
+      }
+
+      .btn::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.7s;
+      }
+
+      .btn:hover::after {
+        left: 100%;
+      }
+
+      /* Main Content */
+      .main-content {
+        padding: 100px 0;
+        text-align: center;
+        position: relative;
+      }
+
+      .section-title {
+        font-size: 3rem;
+        color: var(--primary-red);
+        margin-bottom: 60px;
+        position: relative;
+        display: inline-block;
+        font-family: "Noto Serif Khmer", serif;
+        font-weight: 700;
+      }
+
+      .section-title::before,
+      .section-title::after {
+        content: "❀";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--gold);
+        font-size: 2rem;
+      }
+
+      .section-title::before {
+        left: -70px;
+      }
+
+      .section-title::after {
+        right: -70px;
+      }
+
+      /* Invitation Section */
+      .invitation-box {
+        background-color: white;
+        border-radius: 20px;
+        padding: 60px 40px;
+        box-shadow: var(--shadow);
+        max-width: 1000px;
+        margin: 0 auto 80px;
+        text-align: center;
+        border: 3px solid var(--gold);
+        position: relative;
+        overflow: hidden;
+        animation: slideUp 1s ease-out;
+      }
+
+      .invitation-box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 10px;
+        background: linear-gradient(
+          to right,
+          var(--primary-red),
+          var(--gold),
+          var(--primary-red)
+        );
+      }
+
+      .invitation-box h2 {
+        font-size: 2.8rem;
+        color: var(--primary-red);
+        margin-bottom: 40px;
+        font-family: "Noto Serif Khmer", serif;
+        font-weight: 700;
+      }
+
+      .couple-intro {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 50px;
+        flex-wrap: wrap;
+        position: relative;
+      }
+
+      .person {
+        padding: 0 40px;
+        text-align: center;
+        position: relative;
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .person:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .person:nth-child(3) {
+        animation-delay: 1.5s;
+      }
+
+      .person img {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 8px solid var(--gold);
+        margin-bottom: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        transition: transform 0.5s;
+      }
+
+      .person:hover img {
+        transform: scale(1.05);
+      }
+
+      .person h3 {
+        font-size: 2rem;
+        color: var(--dark-red);
+        margin-bottom: 10px;
+        font-family: "Noto Serif Khmer", serif;
+      }
+
+      .person p {
+        font-style: italic;
+        color: #777;
+        font-size: 1.2rem;
+      }
+
+      .double-happiness {
+        font-size: 5rem;
+        color: var(--primary-red);
+        margin: 0 30px;
+        text-shadow: 3px 3px 0 var(--gold);
+        animation: pulse 2s infinite;
+      }
+
+      /* Features Section */
+      .features {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 60px;
+        gap: 30px;
+      }
+
+      .feature-box {
+        flex: 1;
+        min-width: 300px;
+        max-width: 350px;
+        padding: 50px 30px;
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: var(--shadow);
+        transition: all 0.4s;
+        border-top: 5px solid var(--primary-red);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .feature-box:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 20px 40px rgba(197, 48, 48, 0.2);
+      }
+
+      .feature-icon {
+        font-size: 4rem;
+        color: var(--primary-red);
+        margin-bottom: 25px;
+        display: block;
+      }
+
+      .feature-box h3 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: var(--dark-red);
+        font-family: "Noto Serif Khmer", serif;
+      }
+
+      .feature-box p {
+        color: #666;
+        font-size: 1.1rem;
+        margin-bottom: 25px;
+      }
+
+      /* Guest Section */
+      .guest-section {
+        background: linear-gradient(
+          135deg,
+          var(--dark-red) 0%,
+          var(--primary-red) 100%
+        );
+        padding: 100px 0;
+        margin-top: 100px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .guest-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d4af37' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        opacity: 0.1;
+      }
+
+      .guest-box {
+        background-color: white;
+        border-radius: 20px;
+        padding: 60px 40px;
+        max-width: 700px;
+        margin: 0 auto;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        border: 3px solid var(--gold);
+        position: relative;
+        z-index: 1;
+        animation: scaleIn 1s ease-out;
+      }
+
+      #guest {
+        font-size: 2.5rem;
+        color: var(--primary-red);
+        margin-bottom: 40px;
+        font-family: "Noto Serif Khmer", serif;
+        font-weight: 700;
+        min-height: 60px;
+      }
+
+      .couple-names-guest {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+      }
+
+      .couple-names-guest p {
+        margin: 0 25px;
+        font-size: 1.4rem;
+        color: var(--dark-text);
+        padding: 15px 25px;
+        background-color: rgba(212, 175, 55, 0.1);
+        border-radius: 10px;
+        min-width: 200px;
+      }
+
+      .couple-names-guest p span {
+        display: block;
+        font-weight: bold;
+        color: var(--primary-red);
+        font-size: 1.8rem;
+        margin-bottom: 5px;
+      }
+
+      .guest-box p {
+        font-size: 1.3rem;
+        margin-bottom: 30px;
+        color: #555;
+      }
+
+      .guest-box img {
+        width: 100%;
+        max-height: 350px;
+        object-fit: cover;
+        border-radius: 15px;
+        margin-top: 30px;
+        border: 5px solid var(--gold);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Footer */
+      footer {
+        background: linear-gradient(to right, #222, #444);
+        color: white;
+        padding: 60px 0 30px;
+        text-align: center;
+        position: relative;
+      }
+
+      .footer-logo {
+        font-family: "Dancing Script", "Noto Serif Khmer", cursive;
+        font-size: 3rem;
+        margin-bottom: 25px;
+        color: var(--gold);
+      }
+
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+      }
+
+      .social-icons a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        background-color: rgba(212, 175, 55, 0.2);
+        border-radius: 50%;
+        margin: 0 15px;
+        color: white;
+        text-decoration: none;
+        font-size: 1.5rem;
+        transition: all 0.3s;
+        border: 2px solid transparent;
+      }
+
+      .social-icons a:hover {
+        background-color: var(--gold);
+        color: var(--dark-red);
+        transform: translateY(-5px) scale(1.1);
+        border-color: white;
+      }
+
+      .copyright {
+        margin-top: 30px;
+        font-size: 1rem;
+        opacity: 0.8;
+        color: #ccc;
+      }
+
+      /* Animations */
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(80px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 992px) {
+        .hero h1 {
+          font-size: 4rem;
+        }
+
+        .couple-names {
+          font-size: 2.5rem;
+        }
+
+        .double-happiness {
+          font-size: 4rem;
+          margin: 30px 0;
+        }
+
+        .couple-intro {
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero {
+          padding: 150px 0 80px;
+        }
+
+        .hero h1 {
+          font-size: 3.2rem;
+        }
+
+        .couple-names {
+          font-size: 2rem;
+        }
+
+        .date-place {
+          font-size: 1.4rem;
+        }
+
+        nav ul {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        nav ul li {
+          margin: 5px 15px;
+        }
+
+        .section-title {
+          font-size: 2.5rem;
+        }
+
+        .section-title::before,
+        .section-title::after {
+          display: none;
+        }
+
+        .feature-box {
+          min-width: 100%;
+        }
+
+        .couple-names-guest p {
+          margin: 10px;
+          min-width: 150px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero {
+          padding: 130px 0 60px;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .couple-names {
+          font-size: 1.8rem;
+        }
+
+        .invitation-box {
+          padding: 40px 20px;
+        }
+
+        .person {
+          padding: 0 10px;
+        }
+
+        .person img {
+          width: 140px;
+          height: 140px;
+        }
+
+        .guest-box {
+          padding: 40px 20px;
+        }
+
+        .footer-logo {
+          font-size: 2.2rem;
+        }
+      }
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Noto+Serif+Khmer:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header & Navigation -->
+    <header>
+      <div class="container nav-container">
+        <div class="logo">សោក សង្ហា<span>&</span>ស៊ីម ស្រីរត្ន័</div>
+        <nav>
+          <ul>
+            <li><a href="#home">ទំព័រដើម</a></li>
+            <li><a href="#invitation">ពិធីមង្គលការ</a></li>
+            <li><a href="#gifts">អំណោយ</a></li>
+            <li><a href="#photos">រូបភាព</a></li>
+            <li><a href="#contact">ទំនាក់ទំនង</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <h1>អរុណសួស្ដី ពិធីមង្គលការ</h1>
+        <div class="couple-names">សោក សង្ហា & ស៊ីម ស្រីរត្ន័</div>
+        <div class="date-place">១៥ មីនា ២០២៦ • ភ្នំពេញ</div>
+        <p>
+          យើងខ្ញុំមានកិត្តិយសយ៉ាងខ្លាំងក្លាក្នុងការអញ្ជើញអ្នកចូលរួមពិធីមង្គលការរបស់យើងខ្ញុំ។
+          សូមចូលរួមជាមួយពួកយើងដើម្បីប្រារព្ធពិធីមង្គលការដ៏ពិសេសនេះ។
+        </p>
+        <a href="#invitation" class="btn">មើលពិធីមង្គលការ</a>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="main-content">
+      <div class="container">
+        <h2 class="section-title">ពិធីមង្គលការរបស់ពួកយើង</h2>
+
+        <div class="invitation-box" id="invitation">
+          <h2>ពួកយើងនឹងរៀបការ!</h2>
+          <div class="couple-intro">
+            <div class="person">
+              <img src="./img/image copy 3.png" alt="Sok Sangha" />
+              <h3>សោក សង្ហា</h3>
+              <p>ខ្ញុំបាទ</p>
+            </div>
+            <div class="double-happiness">囍</div>
+            <div class="person">
+              <img src="./img/image copy 2.png" alt="Sim Sreyroth" />
+              <h3>ស៊ីម ស្រីរត្ន័</h3>
+              <p>ខ្ញុំម្ចាស់</p>
+            </div>
+          </div>
+          <p>
+            ដោយមានភាពសប្បាយរីករាយនិងសុភមង្គលយើងខ្ញុំសូមអញ្ជើញអ្នកទាំងអស់គ្នាចូលរួមពិធីមង្គលការរបស់ពួកយើង។
+            ការមកដល់របស់អ្នកនឹងធ្វើឱ្យថ្ងៃនេះកាន់តែពិសេសសម្រាប់ពួកយើង។
+          </p>
+          <p
+            style="
+              margin-top: 30px;
+              font-style: italic;
+              font-size: 1.3rem;
+              color: var(--dark-red);
+            "
+          >
+            ថ្ងៃច័ន្ទ ទី១៥ ខែមីនា ឆ្នាំ២០២៦ វេលាម៉ោង ៤:០០ល្ងាច<br />
+            សាលរៀបការ វិមានពិភពលោក ភ្នំពេញ
+          </p>
+          <a href="#rsvp" class="btn" style="margin-top: 40px"
+            >បញ្ជាក់ការចូលរួម</a
+          >
+        </div>
+
+        <!-- Gifts & Photos Section -->
+        <div class="features">
+          <div class="feature-box" id="gifts">
+            <div class="feature-icon">🎁</div>
+            <h3>អំណោយពិធីមង្គលការ</h3>
+            <p>
+              ការមកដល់របស់អ្នកគឺជាអំណោយដ៏ធំបំផុតសម្រាប់ពួកយើង។ ទោះជាយ៉ាងណាក៏ដោយ
+              ប្រសិនបើអ្នកចង់ផ្តល់អំណោយដល់ពួកយើង
+              សូមមេត្តាទៅកាន់ហាងដែលពួកយើងបានចុះឈ្មោះ។
+            </p>
+            <a
+              href="#"
+              class="btn"
+              style="margin-top: 20px; padding: 12px 25px; font-size: 1rem"
+              >មើលបញ្ជីអំណោយ</a
+            >
+          </div>
+
+          <div class="feature-box" id="photos">
+            <div class="feature-icon">📸</div>
+            <h3>វិចិត្រសាលរូបថត</h3>
+            <p>
+              សូមមើលដំណើរឆាកជីវិតរបស់ពួកយើងតាមរយៈពេលវេលាដ៏ពិសេសទាំងនេះដែលយើងបានថតរូប។
+              រូបថតថ្មីៗទៀតនឹងត្រូវបានបន្ថែមបន្ទាប់ពីពិធីមង្គលការ។
+            </p>
+            <a
+              href="#"
+              class="btn"
+              style="margin-top: 20px; padding: 12px 25px; font-size: 1rem"
+              >មើលវិចិត្រសាល</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Guest Section -->
+    <section class="guest-section" id="rsvp">
+      <div class="container">
+        <h2 class="section-title" style="color: white">អញ្ជើញជាពិសេស</h2>
+        <div class="guest-box">
+          <h2 id="guest">កំពុងផ្ទុក...</h2>
+          <div class="couple-names-guest">
+            <p><span>ខ្ញុំបាទ</span>សោក សង្ហា</p>
+            <p><span>ខ្ញុំម្ចាស់</span>ស៊ីម ស្រីរត្ន័</p>
+          </div>
+          <p>
+            យើងខ្ញុំមានកិត្តិយសយ៉ាងខ្លាំងក្លាក្នុងការអញ្ជើញអ្នកចូលរួមពិធីមង្គលការរបស់ពួកយើង
+            ❤️
+          </p>
+          <img src="./img/image.png" alt="ពិធីមង្គលការ" />
+
+          <div
+            style="
+              margin-top: 30px;
+              padding: 20px;
+              background-color: rgba(212, 175, 55, 0.1);
+              border-radius: 10px;
+            "
+          >
+            <h3 style="color: var(--primary-red); margin-bottom: 15px">
+              ការស្វែងរកភ្ញៀវ (សាកល្បង)
+            </h3>
+            <p>
+              នៅក្នុងកម្មវិធីពិត នេះនឹងទាញយកទិន្នន័យភ្ញៀវពី users.json
+              ដោយផ្អែកលើប៉ារ៉ាម៉ែត្រ URL "id"។
+            </p>
+            <p>
+              ព្យាយាមបន្ថែម <code>?id=1</code> ទៅក្នុង URL
+              ដើម្បីមើលសារផ្ទាល់ខ្លួន។
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <div class="container">
+        <div class="footer-logo">សោក សង្ហា & ស៊ីម ស្រីរត្ន័</div>
+        <p style="font-size: 1.3rem; margin-bottom: 20px">
+          សូមអរគុណចំពោះការចូលរួមរបស់អ្នកនៅក្នុងថ្ងៃពិសេសរបស់ពួកយើង!
+        </p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-telegram"></i></a>
+          <a href="#"><i class="far fa-envelope"></i></a>
+        </div>
+        <div class="copyright">
+          រក្សាសិទ្ធិគ្រប់យ៉ាង© ២០២៦ ពិធីមង្គលការសោក សង្ហា និង ស៊ីម ស្រីរត្ន័។
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Simulating the guest data fetch from the original code
+      document.addEventListener("DOMContentLoaded", function () {
+        // Sample user data in Khmer to simulate the JSON file
+        const sampleUsers = {
+          user: [
+            { id: 1, name: "គ្រួសារសោក" },
+            { id: 2, name: "គ្រួសារស៊ីម" },
+            { id: 3, name: "មិត្តភក្តិ" },
+            { id: 4, name: "ក្រុមគ្រូ" },
+            { id: 5, name: "ក្រុមសហការី" },
+          ],
+        };
+
+        // Get the ID from URL parameters
+        const params = new URLSearchParams(window.location.search);
+        const id = parseInt(params.get("id"));
+
+        // Find guest by ID
+        let guestName = "ភ្ញៀវ";
+        if (id) {
+          const guest = sampleUsers.user.find((u) => u.id === id);
+          if (guest) {
+            guestName = guest.name;
+          }
+        }
+
+        // Update the guest element
+        const guestElement = document.getElementById("guest");
+        if (guestElement) {
+          guestElement.textContent = "ជូនចំពោះ " + guestName;
+
+          // Add fade-in animation for guest name
+          guestElement.style.opacity = "0";
+          guestElement.style.transform = "translateY(20px)";
+          setTimeout(() => {
+            guestElement.style.transition = "opacity 1s, transform 1s";
+            guestElement.style.opacity = "1";
+            guestElement.style.transform = "translateY(0)";
+          }, 300);
+        }
+
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 100,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+
+        // Add floating animation to double happiness symbol
+        const doubleHappiness = document.querySelector(".double-happiness");
+        if (doubleHappiness) {
+          doubleHappiness.style.animation =
+            "float 3s ease-in-out infinite, pulse 2s infinite 1s";
+        }
+
+        // Add scroll-triggered animations
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
+            }
+          });
+        }, observerOptions);
+
+        // Observe elements for scroll animations
+        const animateElements = document.querySelectorAll(
+          ".feature-box, .invitation-box, .guest-box",
+        );
+        animateElements.forEach((el) => {
+          el.style.opacity = "0";
+          el.style.transform = "translateY(30px)";
+          el.style.transition = "opacity 0.8s, transform 0.8s";
+          observer.observe(el);
+        });
+      });
+    </script>
+  </body>
+</html>

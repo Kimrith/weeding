@@ -1,0 +1,28 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "name": "Peter"
+    },
+    {
+      "id": 2,
+      "name": "Rith"
+    },
+    {
+      "id": 3,
+      "name": "Ra"
+    },
+    {
+      "id": 3,
+      "name": "Roth"
+    },
+    {
+      "id": 3,
+      "name": "Lay"
+    },
+    {
+      "id": 3,
+      "name": "Ry"
+    }
+  ]
+}
